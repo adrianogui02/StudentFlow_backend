@@ -49,7 +49,11 @@ const login = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.json({ token });
+    // Não retornar a senha para o client
+    const { password: _, ...userData } = user.toJSON();
+
+    // Retornar o token e os dados do usuário
+    res.json({ token, user: userData });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
