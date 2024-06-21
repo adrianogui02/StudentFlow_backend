@@ -5,11 +5,22 @@ exports.createStudent = async (req, res) => {
     const student = await Student.create({ ...req.body, userId: req.user.id });
     res.status(201).json(student);
   } catch (error) {
-    console.error("Error creating student:", error);
-    res.status(500).json({ error: error.message });
+    if (error.name === "SequelizeUniqueConstraintError") {
+      // Tratamento para erro de duplicação de e-mail
+      const duplicatedField = error.errors[0]?.path; // Pega o campo que causou o erro
+      const errorMessage =
+        duplicatedField === "email"
+          ? "Email already exists. Please use a different email."
+          : "Unique constraint error.";
+
+      return res.status(409).json({ error: errorMessage });
+    }
+
+    res.status(500).json({ error: "An unexpected error occurred." });
   }
 };
 
+// Outras funções do controlador
 exports.getStudents = async (req, res) => {
   try {
     const students = await Student.findAll({ where: { userId: req.user.id } });
