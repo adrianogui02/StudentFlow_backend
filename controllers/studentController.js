@@ -5,9 +5,13 @@ exports.createStudent = async (req, res) => {
     const student = await Student.create({ ...req.body, userId: req.user.id });
     res.status(201).json(student);
   } catch (error) {
-    if (error.name === "SequelizeUniqueConstraintError") {
+    if (error.name === "SequelizeValidationError") {
+      // Tratamento para erro de validação, como email inválido
+      const validationErrors = error.errors.map((err) => err.message);
+      return res.status(400).json({ error: validationErrors });
+    } else if (error.name === "SequelizeUniqueConstraintError") {
       // Tratamento para erro de duplicação de e-mail
-      const duplicatedField = error.errors[0]?.path; // Pega o campo que causou o erro
+      const duplicatedField = error.errors[0]?.path;
       const errorMessage =
         duplicatedField === "email"
           ? "Email already exists. Please use a different email."
@@ -15,7 +19,7 @@ exports.createStudent = async (req, res) => {
 
       return res.status(409).json({ error: errorMessage });
     }
-
+    console.error("Error creating student:", error);
     res.status(500).json({ error: "An unexpected error occurred." });
   }
 };

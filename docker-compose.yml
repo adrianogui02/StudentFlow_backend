@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  api:
+    build: .
+    container_name: studentflow_api
+    ports:
+      - "${PORT}:${PORT}"  # Utiliza a variável de ambiente PORT
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASS}@db:5432/${DB_NAME}  # Construído usando as variáveis de ambiente do .env
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app  # Monta o diretório atual no container
+      - /usr/src/app/node_modules  # Ignora a pasta node_modules do host
+    command: yarn start  # Comando para iniciar a aplicação usando yarn
+
+  db:
+    image: postgres:13
+    container_name: studentflow_db
+    ports:
+      - "5432:5432"  # Mapeia a porta 5432 do container para a porta 5432 no host
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - pgdata:/var/lib/postgresql/data  # Volume para persistir dados do banco
+
+volumes:
+  pgdata:
