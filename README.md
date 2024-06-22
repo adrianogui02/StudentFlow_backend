@@ -53,6 +53,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em seu sistema:
    DB_PASS=admin
    DB_HOST=db
    PORT=3005
+   NODE_ENV=development
    ```
 
 1. **Usando Docker**
