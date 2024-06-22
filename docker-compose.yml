@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/usr/src/app  # Monta o diretório atual no container
       - /usr/src/app/node_modules  # Ignora a pasta node_modules do host
-    command: yarn start  # Comando para iniciar a aplicação usando yarn
+    command: ["dockerize", "-wait", "tcp://db:5432", "-timeout", "60s", "yarn", "start"]  # Usando dockerize para esperar pelo banco
 
   db:
     image: postgres:13
