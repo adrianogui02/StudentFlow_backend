@@ -124,7 +124,7 @@ Abaixo estão detalhes dos endpoints disponíveis na **StudentFlow API**
   ```
   {
   "username": "adrianobre",
-  "password": 13245364758697,
+  "password": 13245364758697
   }
   ```
 
@@ -150,7 +150,7 @@ Abaixo estão detalhes dos endpoints disponíveis na **StudentFlow API**
   ```
   {
   "username": "adrianobre",
-  "password": 13245364758697,
+  "password": 13245364758697
   }
   ```
 
@@ -210,7 +210,7 @@ Abaixo estão detalhes dos endpoints disponíveis na **StudentFlow API**
   {
   "name": "Adriano Nobre",
   "age": 21,
-  "email": adrianob@gmail.com
+  "email": "adrianob@gmail.com",
   "course": "Engenharia da Computação"
   }
   ```
@@ -238,7 +238,7 @@ Abaixo estão detalhes dos endpoints disponíveis na **StudentFlow API**
   {
   "name": "Adriano Nobre",
   "age": 21,
-  "email": adrianobre02@gmail.com
+  "email": "adrianobre02@gmail.com",
   "course": "Engenharia da Computação"
   }
   ```
