@@ -50,8 +50,8 @@ Certifique-se de ter as seguintes ferramentas instaladas em seu sistema:
 
    ```bash
    DB_NAME=studentflow
-   DB_USER=admin
-   DB_PASS=admin
+   DB_USER=postgres
+   DB_PASS=postgres
    DB_HOST=db
    PORT=3005
    NODE_ENV=development
