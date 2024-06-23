@@ -2,14 +2,14 @@ const express = require("express");
 const sequelize = require("./config/database");
 const indexRoutes = require("./routes/index");
 const cors = require("cors");
-
 const app = express();
+const PORT = process.env.PORT;
+
 app.use(express.json());
 app.use(cors());
 app.use("/api", indexRoutes);
 
-const PORT = process.env.PORT;
-
+// Inicializando servidor
 app.listen(PORT, async () => {
   console.log(`Servidor rodando na porta ${PORT}`);
   try {

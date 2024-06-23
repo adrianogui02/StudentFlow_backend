@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
+// Definindo a tabela usuários
 const User = sequelize.define(
   "User",
   {

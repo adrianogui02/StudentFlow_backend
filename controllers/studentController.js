@@ -1,5 +1,6 @@
 const Student = require("../models/students");
 
+// Criar estudante
 exports.createStudent = async (req, res) => {
   try {
     const student = await Student.create({ ...req.body, userId: req.user.id });
@@ -24,7 +25,7 @@ exports.createStudent = async (req, res) => {
   }
 };
 
-// Outras funções do controlador
+// Listar estudantes
 exports.getStudents = async (req, res) => {
   try {
     const students = await Student.findAll({ where: { userId: req.user.id } });
@@ -35,6 +36,7 @@ exports.getStudents = async (req, res) => {
   }
 };
 
+// Listar um estudante por ID
 exports.getStudent = async (req, res) => {
   try {
     const student = await Student.findOne({
@@ -51,6 +53,7 @@ exports.getStudent = async (req, res) => {
   }
 };
 
+// Atualizar estudante por ID
 exports.updateStudent = async (req, res) => {
   try {
     const student = await Student.findOne({
@@ -68,6 +71,7 @@ exports.updateStudent = async (req, res) => {
   }
 };
 
+// Deletar estudante por ID
 exports.deleteStudent = async (req, res) => {
   try {
     const student = await Student.findOne({

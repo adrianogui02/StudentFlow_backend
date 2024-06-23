@@ -4,10 +4,8 @@ const studentRoutes = require("./studentRoutes");
 
 const router = express.Router();
 
-// Use as rotas do usuário
+// Definindo as rotas para os controlladores de usuários e estudantes
 router.use("/user", userRoutes);
 router.use("/student", studentRoutes);
-
-// Use outras rotas conforme necessário
 
 module.exports = router;

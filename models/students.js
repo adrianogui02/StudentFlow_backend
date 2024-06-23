@@ -2,6 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 const User = require("./users"); // Importando o modelo User
 
+// Definindo a tebela estudantes
 const Student = sequelize.define(
   "Student",
   {

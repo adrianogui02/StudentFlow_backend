@@ -3,6 +3,7 @@ const router = express.Router();
 const studentController = require("../controllers/studentController");
 const authMiddleware = require("../middlewares/auth");
 
+// Definindo as rotas de estudantes protejidas pelo middleware(JWT token)
 router.post("/students", authMiddleware, studentController.createStudent);
 router.get("/students", authMiddleware, studentController.getStudents);
 router.get("/students/:id", authMiddleware, studentController.getStudent);
