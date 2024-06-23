@@ -24,6 +24,7 @@ Certifique-se de ter as seguintes ferramentas instaladas em seu sistema:
 - [Node.js](https://nodejs.org/) (versão 14 ou superior)
 - [npm](https://www.npmjs.com/) (geralmente incluído com o Node.js)
 - [Docker](https://www.docker.com/get-started) e [Docker Compose](https://docs.docker.com/compose/install/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ### Passo a Passo
 
